@@ -5,12 +5,13 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
-    render json: @categories
+    render json: @categories, include: ['subcategories']
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+     render json: @category 
   end
 
   # POST /categories
@@ -49,6 +50,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:veg, :non_vag, :restaurant_id)
+      params.require(:category).permit(:name, :restaurant_id)
     end
 end

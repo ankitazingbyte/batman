@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+  <% @category.subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= subcategory.name %></td>
+      </tr>
+  <% end %>

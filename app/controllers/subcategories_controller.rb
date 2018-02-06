@@ -1,16 +1,17 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :update, :destroy]
-
+ 
   # GET /subcategories
   # GET /subcategories.json
   def index
     @subcategories = Subcategory.all
-    render json: @subcategories
+    render json: @subcategories, include: ['products']
   end
 
   # GET /subcategories/1
   # GET /subcategories/1.json
   def show
+     render json: @subcategory 
   end
 
   # POST /subcategories
@@ -49,6 +50,6 @@ class SubcategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcategory_params
-      params.require(:subcategory).permit(:name, :price, :details)
+      params.require(:subcategory).permit(:name, :price, :details, :category_id)
     end
 end

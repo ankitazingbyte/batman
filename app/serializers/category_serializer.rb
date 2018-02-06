@@ -1,3 +1,12 @@
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :veg, :non_vag, :restaurant_id
+	include Rails.application.routes.url_helpers
+  attributes :id, :name, :restaurant_id, :links
+  has_many :subcategories
+
+  def links
+    {
+      self: category_path(object.id)
+    }
+  end
+
 end

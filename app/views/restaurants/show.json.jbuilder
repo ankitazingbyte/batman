@@ -1,2 +1,5 @@
 json.partial! "restaurants/restaurant", restaurant: @restaurant
-json.array! @categories, partial: 'categories/category', as: :category
+
+@restaurant.categories.each do |category| 
+json.array! categories, partial: 'categories/category', as: :category
+end
