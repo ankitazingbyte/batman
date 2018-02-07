@@ -1,7 +1,7 @@
 class CategorySerializer < ActiveModel::Serializer
 	include Rails.application.routes.url_helpers
-  attributes :id, :name, :restaurant_id, :links
-  has_many :subcategories
+	attributes :id, :name, :restaurant_id, :links
+	has_many :subcategories
 
   def links
     {

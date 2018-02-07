@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+https://engineering.musefind.com/building-a-simple-token-based-authorization-api-with-rails-a5c181b83e02

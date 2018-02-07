@@ -4,7 +4,6 @@ class TastesController < ApplicationController
   # GET /tastes
   def index
     @tastes = Taste.all
-
     render json: @tastes
   end
 
