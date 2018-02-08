@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include ActionController::MimeResponds
+
   # Include Knock within your application.
   #     include Knock::Authenticable
   	   include ActionController::Helpers

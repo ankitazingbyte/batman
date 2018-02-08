@@ -10,15 +10,21 @@ Rails.application.routes.draw do
 
   #root 'restaurants#index'
   resources :tastes
-  resources :products
 	resources :subcategories
+          resources :products
+
 	resources :restaurants
 	resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] 
   resources :orders
+  devise_for :users
 
-resources :users
-  
+  namespace :api do
+    namespace :v1 do
+        resources :sessions, only: :create
+        resources :registrations, only: :create
+    end 
+  end 
 end
