@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'user_token' => 'user_token#create'
+  # post 'user_token' => 'user_token#create'
   get 'order_items/create'
 
   get 'order_items/update'
@@ -19,17 +19,6 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy] 
   resources :orders
 
-
-  root   'home#index'
-  get    'auth'            => 'home#auth'
-
-  # Get login token from Knock
-  post   'user_token'      => 'user_token#create'
+resources :users
   
-  # User actions
-  get    '/users'          => 'users#index'
-  get    '/users/current'  => 'users#current'
-  post   '/users/create'   => 'users#create'
-  patch  '/user/:id'       => 'users#update'
-  delete '/user/:id'       => 'users#destroy'
 end

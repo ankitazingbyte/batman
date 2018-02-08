@@ -22,4 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-https://engineering.musefind.com/building-a-simple-token-based-authorization-api-with-rails-a5c181b83e02
+https://www.simplify.ba/articles/2016/06/18/creating-rails5-api-only-application-following-jsonapi-specification/

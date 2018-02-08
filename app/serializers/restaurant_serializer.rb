@@ -1,6 +1,6 @@
 class RestaurantSerializer < ActiveModel::Serializer
 	include Rails.application.routes.url_helpers
-    attributes :id,:name, :address, :phone, :links
+    attributes :id,:name, :address, :phone, :links, :restaurant_id
     has_many :categories
   
   def links
