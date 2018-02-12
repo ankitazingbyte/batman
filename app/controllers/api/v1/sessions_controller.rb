@@ -1,15 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
-
+  skip_before_action :authenticate_user! #, :only => [:set_status]
   def create
-    
-    @user = params[:email].present? && User.find_by(email: params[:email])
-    # if user.valid_password? user_password
+    @user = User.authenticate(params[:email], params[:password])
     unless @user.present?
-      render json: { errors:"Invalid #{params.key(params[:username] || params[:email]).titleize} or Password",:success=>false }, status: 200
-    else
-      # sign_in @user
-      render json: @user, status: 200
+      render json: { errors:"Invalid Email or Password!",:success=>false }, status: 200
     end
+      render json: { status: true, user: @user}, status: 200
   end
 
   def destroy
@@ -18,5 +14,4 @@ class Api::V1::SessionsController < ApplicationController
     user.save
     render json: user, status: 200
   end
-
 end

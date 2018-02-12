@@ -1,28 +1,30 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
+  include ActionController::Helpers
+  # Use this method to authenticate Users.
+  before_action :authenticate_user!, unless: :devise_controller?
 
-  # Include Knock within your application.
-  #     include Knock::Authenticable
-  	   include ActionController::Helpers
-  	  helper_method :current_order
-    	def current_order
-      	if !session[:order_id].nil?
-        		Order.find(session[:order_id])
-      	else
-        		Order.new
-      	end
-    	end
-      
-  def return_unauthorized
-    render status: :unauthorized
-  end
-    
-    protected
-    
-    # Method for checking if current_user is admin or not.
-    def authorize_as_admin
-      return_unauthorized unless !current_user.nil? && current_user.is_admin?
+  helper_method :current_order
+  def current_order
+    if !session[:order_id].nil?
+        Order.find(session[:order_id])
+    else
+        Order.new
     end
+  end
+
+  private
+
+  def authenticate_user!
+    user = User.find_by_auth_token(user_token)
+    if user.nil?
+      render json: { error: "Invaid Token"}
+    else
+      @current_user = user
+    end
+  end
+
+  def user_token
+    request.headers['X-AUTH-TOKEN'].presence || params['token'].presence
+  end
 end
-
-

@@ -1,19 +1,17 @@
 class Api::V1::RegistrationsController < ApplicationController
 
-  # skip_before_action :authenticate_user! #, :only => [:set_status]
+  skip_before_action :authenticate_user! #, :only => [:set_status]
 
   def create
-    debugger
+    user_params = params.require(:email)
+    user_params = params.require(:username)
+    user_params = params.require(:password)
     user_params = params.permit(:email,:password,:username)
     @user = User.new(user_params)
     begin
       @user.save!
       if @user.persisted?
-        respond_to do |format|
-          format.json do
-            render json: @user
-          end
-        end      
+        render json: {status: true, message: "Sign Up successful!", user: @user}  
       else
         render json: {status: false, message: @user.errors.full_messages.first}, :status=>200
       end
