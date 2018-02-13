@@ -1,5 +1,5 @@
 class AddCategoryIdToSubcategory < ActiveRecord::Migration[5.1]
   def change
-    add_reference :subcategories, :category, foreign_key: true
+    t.integer :subcategories, :category_id
   end
 end
