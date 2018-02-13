@@ -21,13 +21,13 @@ Subcategory.create(name:"paneer",category_id: "3")
 Subcategory.create(name:"chicken",category_id: "4")
 Subcategory.create(name:"chicken",category_id: "5")
 Subcategory.create(name:"chicken",category_id: "6")
-Product.delete_all
-Product.create(name: "kadai paneer", price: "200",subcategory_id: "1")
-Product.create(name: "kadai paneer", price: "200",subcategory_id: "2")
-Product.create(name: "kadai paneer", price: "200",subcategory_id: "3")
-Product.create(name: "roasted chicken", price: "480",subcategory_id: "4")
-Product.create(name: "roasted chicken", price: "480",subcategory_id: "5")
-Product.create(name: "roasted chicken", price: "480",subcategory_id: "6")
+# Product.delete_all
+# Product.create(name: "kadai paneer", price: "200",subcategory_id: "1")
+# Product.create(name: "kadai paneer", price: "200",subcategory_id: "2")
+# Product.create(name: "kadai paneer", price: "200",subcategory_id: "3")
+# Product.create(name: "roasted chicken", price: "480",subcategory_id: "4")
+# Product.create(name: "roasted chicken", price: "480",subcategory_id: "5")
+# Product.create(name: "roasted chicken", price: "480",subcategory_id: "6")
 OrderStatus.delete_all
 OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Placed"
