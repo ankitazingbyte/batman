@@ -1,5 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
+  
   skip_before_action :authenticate_user! #, :only => [:set_status]
+  
   def create
     @user = User.authenticate(params[:email], params[:password])
     unless @user.present?

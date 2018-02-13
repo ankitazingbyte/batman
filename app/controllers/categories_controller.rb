@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @categories = Category.search(params[:search])
     render json: @categories, include: ['subcategories']
   end
 

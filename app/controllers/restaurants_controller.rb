@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+    @restaurants = Restaurant.search(params[:search])
     render json: @restaurants, include: ['categories','category.subcategories']
   end
 
@@ -57,6 +58,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:user_id, :name, :address, :phone, :category_id)
+      params.require(:restaurant).permit(:name, :address, :phone, :category_id, :user_id)
     end
 end

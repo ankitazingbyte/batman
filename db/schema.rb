@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212193059) do
+ActiveRecord::Schema.define(version: 20180213111901) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,24 @@ ActiveRecord::Schema.define(version: 20180212193059) do
     t.datetime "updated_at", null: false
     t.integer "restaurant_id"
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
+  end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.time "delivery_time"
+    t.date "delivery_date"
+    t.string "delivery_address"
+    t.string "payment_mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delivery_boys", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "image"
+    t.string "total_delivery"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -60,10 +78,25 @@ ActiveRecord::Schema.define(version: 20180212193059) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.float "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "restaurant_id"
+    t.integer "delivery_boy_id"
+    t.index ["delivery_boy_id"], name: "index_ratings_on_delivery_boy_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.integer "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

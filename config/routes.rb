@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :delivery_boys
+  resources :ratings
+  resources :checkouts
   # post 'user_token' => 'user_token#create'
   get 'order_items/create'
 
@@ -8,10 +11,9 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
-  #root 'restaurants#index'
   resources :tastes
 	resources :subcategories
-          resources :products
+  resources :products
 
 	resources :restaurants
 	resources :categories
