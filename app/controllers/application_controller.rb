@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
   include ActionController::Helpers
   # Use this method to authenticate Users.
-   # before_action :authenticate_user!, unless: :devise_controller?
+    before_action :authenticate_user!, unless: :devise_controller?
 
   helper_method :current_order
   def current_order
