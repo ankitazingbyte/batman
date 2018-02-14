@@ -3,8 +3,7 @@ class User < ApplicationRecord
 	attr_accessor :password
 	before_save :encrypt_password
 	after_create :encrypt_password
-
-	 has_many :restaurants
+	has_many :restaurants
 	validates_uniqueness_of :email
 	before_create :set_auth_token
 
