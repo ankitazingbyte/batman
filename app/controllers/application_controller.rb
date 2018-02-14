@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    user = User.find_by_auth_token(user_token)
+    user = User.where(user_token)
     if user.nil?
       render json: { error: "Invaid Token"}
     else
