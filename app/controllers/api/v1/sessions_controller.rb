@@ -6,7 +6,7 @@ class Api::V1::SessionsController < ApplicationController
     @user = User.authenticate(params[:email], params[:password])
     begin
     unless @user.present?
-      render json: { message:"Invalid Email or Password!",:success=>false }, status: 200
+      render json: { message:"Invalid Email or Password!",:status=>false }, status: 200
     else
       render json: { status: true, message: "Sign in successful!", user: @user}, status: 200
       end
