@@ -4,10 +4,15 @@ class Api::V1::SessionsController < ApplicationController
   
   def create
     @user = User.authenticate(params[:email], params[:password])
+    begin
     unless @user.present?
-      render json: { errors:"Invalid Email or Password!",:success=>false }, status: 200
+      render json: { message:"Invalid Email or Password!",:success=>false }, status: 200
+    else
+      render json: { status: true, message: "Sign in successful!", user: @user}, status: 200
+      end
+      rescue => e
+      render json: {status: false, message: e.message}, :status=>200
     end
-      render json: { status: true, user: @user}, status: 200
   end
 
   def destroy
